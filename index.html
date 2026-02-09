@@ -1,24 +1,132 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kindertick - A Little Wonder for Your Little Wunderkind</title>
-    <meta name="description" content="Kindertick - A unique toy that brings smiles to children. Discover the magic of innovation designed for your little ones." />
-    <meta name="author" content="Kindertick" />
+    <meta name="description" content="Kindertick - A unique toy that brings smiles to children. Something wonderful is coming.">
+    <meta name="author" content="Kindertick">
+    
+    <meta property="og:title" content="Kindertick - The Tick that Brings a Smile">
+    <meta property="og:description" content="A little wonder for your little wunderkind. Coming soon.">
+    <meta property="og:type" content="website">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kindertick - The Tick that Brings a Smile">
+    <meta name="twitter:description" content="A little wonder for your little wunderkind">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="clay-canvas min-h-screen">
+        <main class="content-wrapper">
+            <!-- Mystery Box Icon -->
+            <div class="fade-in-up delay-1 animate-float">
+                <div class="neu-raised-lg icon-box">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary">
+                        <line x1="8" y1="6" x2="21" y2="6"></line>
+                        <line x1="8" y1="12" x2="21" y2="12"></line>
+                        <line x1="8" y1="18" x2="21" y2="18"></line>
+                        <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                        <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                        <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                    </svg>
+                </div>
+            </div>
 
-    <meta property="og:title" content="Kindertick - The Tick that Brings a Smile" />
-    <meta property="og:description" content="A little wonder for your little wunderkind. Coming soon." />
-    <meta property="og:type" content="website" />
+            <!-- Hero Capsule -->
+            <div class="fade-in-up delay-2 neu-raised-lg hero-capsule">
+                <!-- Sound Wave -->
+                <div class="soundwave-container">
+                    <div class="soundwave-bar" style="animation-delay: 0s"></div>
+                    <div class="soundwave-bar" style="animation-delay: 0.12s"></div>
+                    <div class="soundwave-bar" style="animation-delay: 0.24s"></div>
+                    <div class="soundwave-bar" style="animation-delay: 0.36s"></div>
+                    <div class="soundwave-bar" style="animation-delay: 0.48s"></div>
+                    <div class="soundwave-bar" style="animation-delay: 0.60s"></div>
+                    <div class="soundwave-bar" style="animation-delay: 0.72s"></div>
+                    <div class="soundwave-bar" style="animation-delay: 0.84s"></div>
+                    <div class="soundwave-bar" style="animation-delay: 0.96s"></div>
+                    <div class="soundwave-bar" style="animation-delay: 1.08s"></div>
+                </div>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Kindertick - The Tick that Brings a Smile" />
-    <meta name="twitter:description" content="A little wonder for your little wunderkind" />
-    <script type="module" crossorigin src="/assets/index-DWKUvdvJ.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CoR7kmTV.css">
-  </head>
+                <h1 class="hero-title">The Tick that brings a Smile</h1>
+                <h2 class="hero-subtitle">A little wonder for your little wunderkind.</h2>
+            </div>
 
-  <body>
-    <div id="root"></div>
-  </body>
+            <!-- Countdown -->
+            <div class="fade-in-up delay-3 countdown-wrapper">
+                <div class="countdown-box neu-raised">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="days">0</span>
+                        <span class="countdown-label">Days</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours">0</span>
+                        <span class="countdown-label">Hours</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes">0</span>
+                        <span class="countdown-label">Minutes</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="seconds">0</span>
+                        <span class="countdown-label">Seconds</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lead Capture -->
+            <div class="fade-in-up delay-4">
+                <form class="lead-form" id="leadForm">
+                    <div class="form-group">
+                        <input type="email" id="leadEmail" placeholder="your@email.com" required>
+                    </div>
+                    <button type="submit" class="btn-primary">
+                        Get Your Golden Ticket
+                    </button>
+                </form>
+                <div class="lead-success" id="leadSuccess" style="display: none;">
+                    <div class="neu-raised success-box">
+                        <p class="success-title">🎉 You're on the list!</p>
+                        <p class="success-message">We'll send your Golden Ticket soon.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="fade-in-up delay-5 footer-items">
+                <div class="footer-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 6v6l4 2"></path>
+                    </svg>
+                    <span>Safe & Secure</span>
+                </div>
+                <div class="footer-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                    <span>Made with Love</span>
+                </div>
+                <div class="footer-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M8 12l2 2 4-4"></path>
+                    </svg>
+                    <span>Trusted by Parents</span>
+                </div>
+            </div>
+
+            <!-- Contact Link -->
+            <div class="fade-in-up delay-6 contact-link">
+                <a href="contact.html">Have a question? Get in touch</a>
+            </div>
+
+            <p class="fade-in-up delay-6 copyright">© 2026 Kindertick. Something wonderful is coming.</p>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
