@@ -1,4 +1,5 @@
 import { Package } from "lucide-react";
+import { Link } from "react-router-dom";
 import SoundWave from "@/components/SoundWave";
 import CountdownTimer from "@/components/CountdownTimer";
 import LeadCapture from "@/components/LeadCapture";
@@ -41,6 +42,16 @@ const Index = () => {
         {/* Footer */}
         <div className="fade-in-up delay-5 w-full pt-4">
           <PerformanceFooter />
+        </div>
+
+        {/* Contact Link */}
+        <div className="fade-in-up delay-6 w-full text-center">
+          <Link
+            to="/contact"
+            className="text-sm text-primary hover:underline font-medium transition"
+          >
+            Have a question? Get in touch
+          </Link>
         </div>
 
         <p className="fade-in-up delay-6 text-xs text-muted-foreground">
