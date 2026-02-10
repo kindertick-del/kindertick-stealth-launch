@@ -103,7 +103,7 @@ function initContactForm() {
 
             // Save to Google Sheet via Apps Script
             try {
-                const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/d/YOUR_DEPLOYMENT_ID/userweb?v=1';
+                const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/d/AKfycbzYyDylFy5_0ysfYXbEXrI073kfP0zUrGMeD6oFMtBkeJ_3ZR5FiFbJaTEw7aOLGJ4I/userweb?v=1';
                 const formData = new FormData();
                 formData.append('Name', name);
                 formData.append('Email', email);
