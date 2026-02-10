@@ -31,65 +31,6 @@ function initCountdown() {
     setInterval(updateCountdown, 1000);
 }
 
-// Lead Capture Form
-function initLeadForm() {
-    const form = document.getElementById('leadForm');
-    const successDiv = document.getElementById('leadSuccess');
-    const emailInput = document.getElementById('leadEmail');
-
-    if (form) {
-        form.addEventListener('submit', async function (e) {
-            e.preventDefault();
-
-            const email = emailInput.value.trim();
-
-            if (!email) {
-                alert('Please enter a valid email');
-                return;
-            }
-
-            // Save to Google Sheet via Apps Script
-            try {
-                const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxPHuSo1O_AwTQj1roRnhv14TYg1hi7akS7ZJbETnZEhkF5ghMPPksLCIuumVnlX9Ot/exec';
-                const formData = new FormData();
-                formData.append('Email', email);
-                formData.append('Type', 'Lead Capture');
-                formData.append('Timestamp', new Date().toISOString());
-                
-                const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
-                    method: 'POST',
-                    body: formData,
-                });
-                
-                if (response.ok) {
-                    console.log('✅ Form submitted to Google Sheets successfully');
-                } else {
-                    console.warn('⚠️ Google Sheets response:', response.status, response.statusText);
-                }
-            } catch (error) {
-                console.error('❌ Google Sheets error:', error.message);
-                console.log('Form data will be saved to localStorage');
-            }
-
-            // Save to localStorage for demonstration
-            const emails = JSON.parse(localStorage.getItem('kindertick_emails') || '[]');
-            emails.push({
-                email: email,
-                timestamp: new Date().toISOString()
-            });
-            localStorage.setItem('kindertick_emails', JSON.stringify(emails));
-            console.log('✅ Form saved to localStorage');
-
-            // Show success message
-            form.style.display = 'none';
-            successDiv.style.display = 'block';
-
-            // Reset form
-            form.reset();
-        });
-    }
-}
-
 // Contact Form Handler
 function initContactForm() {
     const form = document.getElementById('contactForm');
@@ -155,6 +96,5 @@ function initContactForm() {
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function () {
     initCountdown();
-    initLeadForm();
     initContactForm();
 });
