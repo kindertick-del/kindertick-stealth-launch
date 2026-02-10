@@ -56,12 +56,19 @@ function initLeadForm() {
                 formData.append('Type', 'Lead Capture');
                 formData.append('Timestamp', new Date().toISOString());
                 
-                await fetch(GOOGLE_APPS_SCRIPT_URL, {
+                const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
                     method: 'POST',
                     body: formData,
-                }).catch(() => {}); // Fail silently if no script URL configured
+                });
+                
+                if (response.ok) {
+                    console.log('✅ Form submitted to Google Sheets successfully');
+                } else {
+                    console.warn('⚠️ Google Sheets response:', response.status, response.statusText);
+                }
             } catch (error) {
-                console.log('Google Sheets not configured, using local storage');
+                console.error('❌ Google Sheets error:', error.message);
+                console.log('Form data will be saved to localStorage');
             }
 
             // Save to localStorage for demonstration
@@ -71,6 +78,7 @@ function initLeadForm() {
                 timestamp: new Date().toISOString()
             });
             localStorage.setItem('kindertick_emails', JSON.stringify(emails));
+            console.log('✅ Form saved to localStorage');
 
             // Show success message
             form.style.display = 'none';
@@ -103,7 +111,7 @@ function initContactForm() {
 
             // Save to Google Sheet via Apps Script
             try {
-                const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/d/AKfycbzYyDylFy5_0ysfYXbEXrI073kfP0zUrGMeD6oFMtBkeJ_3ZR5FiFbJaTEw7aOLGJ4I/userweb?v=1';
+                const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyM0las2qlqwxSRBpv9cPlEvbRY_you2upLExOkwJyV6OMMfAepAwgbm-M_FJYPacH_bw/exec';
                 const formData = new FormData();
                 formData.append('Name', name);
                 formData.append('Email', email);
@@ -111,12 +119,19 @@ function initContactForm() {
                 formData.append('Type', 'Contact Form');
                 formData.append('Timestamp', new Date().toISOString());
                 
-                await fetch(GOOGLE_APPS_SCRIPT_URL, {
+                const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
                     method: 'POST',
                     body: formData,
-                }).catch(() => {}); // Fail silently if no script URL configured
+                });
+                
+                if (response.ok) {
+                    console.log('✅ Form submitted to Google Sheets successfully');
+                } else {
+                    console.warn('⚠️ Google Sheets response:', response.status, response.statusText);
+                }
             } catch (error) {
-                console.log('Google Sheets not configured, using local storage');
+                console.error('❌ Google Sheets error:', error.message);
+                console.log('Form data will be saved to localStorage');
             }
 
             // Save to localStorage for demonstration
@@ -128,12 +143,11 @@ function initContactForm() {
                 timestamp: new Date().toISOString()
             });
             localStorage.setItem('kindertick_messages', JSON.stringify(messages));
+            console.log('✅ Form saved to localStorage');
 
             // Show success
             form.style.display = 'none';
             successDiv.style.display = 'block';
-
-            console.log('Message saved and sent to Google Sheet');
         });
     }
 }
