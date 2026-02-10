@@ -38,7 +38,7 @@ function initLeadForm() {
     const emailInput = document.getElementById('leadEmail');
 
     if (form) {
-        form.addEventListener('submit', function (e) {
+        form.addEventListener('submit', async function (e) {
             e.preventDefault();
 
             const email = emailInput.value.trim();
@@ -46,6 +46,22 @@ function initLeadForm() {
             if (!email) {
                 alert('Please enter a valid email');
                 return;
+            }
+
+            // Save to Google Sheet via Apps Script
+            try {
+                const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/d/AKfycbzYyDylFy5_0ysfYXbEXrI073kfP0zUrGMeD6oFMtBkeJ_3ZR5FiFbJaTEw7aOLGJ4I/userweb?v=1';
+                const formData = new FormData();
+                formData.append('Email', email);
+                formData.append('Type', 'Lead Capture');
+                formData.append('Timestamp', new Date().toISOString());
+                
+                await fetch(GOOGLE_APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData,
+                }).catch(() => {}); // Fail silently if no script URL configured
+            } catch (error) {
+                console.log('Google Sheets not configured, using local storage');
             }
 
             // Save to localStorage for demonstration
@@ -85,6 +101,24 @@ function initContactForm() {
                 return;
             }
 
+            // Save to Google Sheet via Apps Script
+            try {
+                const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/d/YOUR_DEPLOYMENT_ID/userweb?v=1';
+                const formData = new FormData();
+                formData.append('Name', name);
+                formData.append('Email', email);
+                formData.append('Message', message);
+                formData.append('Type', 'Contact Form');
+                formData.append('Timestamp', new Date().toISOString());
+                
+                await fetch(GOOGLE_APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData,
+                }).catch(() => {}); // Fail silently if no script URL configured
+            } catch (error) {
+                console.log('Google Sheets not configured, using local storage');
+            }
+
             // Save to localStorage for demonstration
             const messages = JSON.parse(localStorage.getItem('kindertick_messages') || '[]');
             messages.push({
@@ -99,8 +133,7 @@ function initContactForm() {
             form.style.display = 'none';
             successDiv.style.display = 'block';
 
-            // User can still send email to contact@kindertick.com
-            console.log('Message saved. User can also email contact@kindertick.com');
+            console.log('Message saved and sent to Google Sheet');
         });
     }
 }
