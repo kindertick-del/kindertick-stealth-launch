@@ -50,7 +50,7 @@ function initLeadForm() {
 
             // Save to Google Sheet via Apps Script
             try {
-                const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyM0las2qlqwxSRBpv9cPlEvbRY_you2upLExOkwJyV6OMMfAepAwgbm-M_FJYPacH_bw/exec';
+                const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxPHuSo1O_AwTQj1roRnhv14TYg1hi7akS7ZJbETnZEhkF5ghMPPksLCIuumVnlX9Ot/exec';
                 const formData = new FormData();
                 formData.append('Email', email);
                 formData.append('Type', 'Lead Capture');
@@ -111,7 +111,7 @@ function initContactForm() {
 
             // Save to Google Sheet via Apps Script
             try {
-                const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyM0las2qlqwxSRBpv9cPlEvbRY_you2upLExOkwJyV6OMMfAepAwgbm-M_FJYPacH_bw/exec';
+                const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxPHuSo1O_AwTQj1roRnhv14TYg1hi7akS7ZJbETnZEhkF5ghMPPksLCIuumVnlX9Ot/exec';
                 const formData = new FormData();
                 formData.append('Name', name);
                 formData.append('Email', email);
