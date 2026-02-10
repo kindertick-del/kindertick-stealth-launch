@@ -37,8 +37,10 @@ function initContactForm() {
     const successDiv = document.getElementById('contactSuccess');
 
     if (form) {
+        console.log('✅ Contact form initialized');
         form.addEventListener('submit', async function (e) {
             e.preventDefault();
+            console.log('Form submitted!');
 
             const name = document.getElementById('contactName').value.trim();
             const email = document.getElementById('contactEmail').value.trim();
@@ -50,6 +52,8 @@ function initContactForm() {
                 return;
             }
 
+            console.log('Form data valid:', { name, email });
+
             // Save to Google Sheet via Apps Script
             try {
                 const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxPHuSo1O_AwTQj1roRnhv14TYg1hi7akS7ZJbETnZEhkF5ghMPPksLCIuumVnlX9Ot/exec';
@@ -60,22 +64,19 @@ function initContactForm() {
                 formData.append('Type', 'Contact Form');
                 formData.append('Timestamp', new Date().toISOString());
                 
+                console.log('Sending to Google Apps Script...');
                 const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
                     method: 'POST',
                     body: formData,
+                    mode: 'no-cors'
                 });
                 
-                if (response.ok) {
-                    console.log('✅ Form submitted to Google Sheets successfully');
-                } else {
-                    console.warn('⚠️ Google Sheets response:', response.status, response.statusText);
-                }
+                console.log('✅ Google Apps Script request sent');
             } catch (error) {
-                console.error('❌ Google Sheets error:', error.message);
-                console.log('Form data will be saved to localStorage');
+                console.warn('⚠️ Google Sheets error:', error.message);
             }
 
-            // Save to localStorage for demonstration
+            // Save to localStorage
             const messages = JSON.parse(localStorage.getItem('kindertick_messages') || '[]');
             messages.push({
                 name: name,
@@ -86,10 +87,14 @@ function initContactForm() {
             localStorage.setItem('kindertick_messages', JSON.stringify(messages));
             console.log('✅ Form saved to localStorage');
 
-            // Show success
+            // Show success message
             form.style.display = 'none';
             successDiv.style.display = 'block';
+            
+            console.log('✅ Success message displayed');
         });
+    } else {
+        console.warn('⚠️ Contact form not found on this page');
     }
 }
 
