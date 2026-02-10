@@ -609,8 +609,8 @@ body {
 .logo-container {
     display: flex;
     justify-content: center;
-    margin-bottom: 2.5rem;
-    padding-top: 1rem;
+    margin-bottom: 0.5rem;
+    padding-top: 0;
     animation: fadeInDown 0.7s ease-out forwards;
     opacity: 0;
 }
@@ -630,12 +630,12 @@ body {
     height: 140px;
     width: auto;
     object-fit: contain;
-    filter: drop-shadow(0 4px 8px rgba(46, 125, 50, 0.15));
+    filter: none;
     transition: filter 0.3s ease;
 }
 
 .logo-container a:hover .logo {
-    filter: drop-shadow(0 6px 12px rgba(46, 125, 50, 0.25));
+    filter: none;
 }
 
 @keyframes fadeInDown {
